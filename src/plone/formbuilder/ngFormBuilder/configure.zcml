@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="plone.formbuilder">
+
+
+
+<browser:resourceDirectory
+  name="plone.ngformbuilder"
+  directory="dist" />
+
+<browser:page
+       for="*"
+       name="formbuilder"
+       class="plone.formbuilder.ngFormBuilder.formbuilder.FormBuilder"
+       permission="zope2.View"
+       template="formbuilder.pt"
+       allowed_attributes=""
+       />
+
+</configure>
+

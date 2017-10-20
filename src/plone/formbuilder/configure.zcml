@@ -9,7 +9,7 @@
   <includeDependencies package="." />
 
   <include package=".browser" />
-
+    <include package=".ngFormBuilder" />
 
   <genericsetup:registerProfile
       name="default"
