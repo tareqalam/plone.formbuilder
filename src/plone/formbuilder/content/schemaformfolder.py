@@ -6,7 +6,7 @@ from plone.supermodel import model
 from plone.dexterity.content import Container
 from plone.autoform import directives
 from collective.z3cform.rawdictwidget import RawDictWidgetFactory
-
+import simplejson as json
 from plone.formbuilder import _
 
 
@@ -32,3 +32,31 @@ class SchemaFormFolder(Container):
     """Convenience subclass for ``CDR`` portal type
     """
     # Make sure Container's accessors don't take precedence
+
+    def get_schema_json(self):
+        """
+        get schema json
+        """
+        if self.schema_json:
+            return json.dumps(self.schema_json)
+        else:
+            return """
+            {
+          components: [{
+            type: 'button',
+            theme: 'primary',
+            disableOnInvalid: true,
+            action: 'submit',
+            block: false,
+            rightIcon: '',
+            leftIcon: '',
+            size: 'md',
+            key: 'submit',
+            tableView: false,
+            label: 'Submit',
+            input: true
+          }],
+          display: 'form'
+        };
+
+        """

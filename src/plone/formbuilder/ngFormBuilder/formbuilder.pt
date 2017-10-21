@@ -86,11 +86,14 @@
             <form-builder form="form"></form-builder>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" tal:define="formdata python:context.get_schema_json()">
+          <script type="text/javascript" tal:content="python:'var json_schema_saved_form= ' + formdata + ';'"> </script>
           <h3 class="text-center text-muted">as JSON Schema</h3>
           <pre class="bg-info"><h4><code>$rootScope.form = </code></h4></pre>
+
           <form method="post" tal:attributes="action python:context.absolute_url()+'/save_jsom_schema_of_form'">
-            <textarea style="display: none;">{{form}}</textarea>
+
+            <textarea name="schema_json" style="display: none;">{{form}}</textarea>
             <input type="submit" class="btn btn-info btn-lg" name="save_json" value="Save the form"/>
           </form>
           <div class="well jsonviewer">
@@ -175,157 +178,7 @@ node server</pre>
           name: 'wizard',
           title: 'Wizard'
         }];
-        $rootScope.form = {
-          components: [{
-            input: true,
-            tableView: true,
-            inputType: 'text',
-            inputMask: '',
-            label: 'First Name',
-            key: 'firstName',
-            placeholder: 'Enter your first name',
-            prefix: '',
-            suffix: '',
-            multiple: false,
-            defaultValue: '',
-            protected: false,
-            unique: false,
-            persistent: true,
-            validate: {
-              required: false,
-              minLength: '',
-              maxLength: '',
-              pattern: '',
-              custom: '',
-              customPrivate: false
-            },
-            conditional: {
-              show: false,
-              when: null,
-              eq: ''
-            },
-            type: 'textfield'
-          }, {
-            input: true,
-            tableView: true,
-            inputType: 'text',
-            inputMask: '',
-            label: 'Last Name',
-            key: 'lastName',
-            placeholder: 'Enter your last name',
-            prefix: '',
-            suffix: '',
-            multiple: false,
-            defaultValue: '',
-            protected: false,
-            unique: false,
-            persistent: true,
-            validate: {
-              required: false,
-              minLength: '',
-              maxLength: '',
-              pattern: '',
-              custom: '',
-              customPrivate: false
-            },
-            conditional: {
-              show: false,
-              when: null,
-              eq: ''
-            },
-            type: 'textfield'
-          }, {
-            type: 'select',
-            validate: {
-              required: false
-            },
-            clearOnHide: true,
-            persistent: true,
-            unique: false,
-            protected: false,
-            multiple: true,
-            template: '<span>{{ item.label }}</span>',
-            authenticate: false,
-            filter: '',
-            refreshOn: '',
-            defaultValue: '',
-            valueProperty: '',
-            dataSrc: 'values',
-            data: {
-              custom: '',
-              resource: '',
-              url: '',
-              json: '',
-              values: [
-                {
-                  label: 'Raindrops on roses',
-                  value: 'raindropsOnRoses'
-                },
-                {
-                  label: 'Whiskers on Kittens',
-                  value: 'whiskersOnKittens'
-                },
-                {
-                  label: 'Bright copper kettles',
-                  value: 'brightCopperKettles'
-                },
-                {
-                  label: 'Warm woolen Mittens',
-                  value: 'warmWoolenMittens'
-                },
-                [
-
-                ]
-              ]
-            },
-            placeholder: 'Select a few',
-            key: 'favoriteThings',
-            label: 'Favorite Things',
-            tableView: true,
-            input: true
-          }, {
-            input: true,
-            tableView: true,
-            label: 'Message',
-            key: 'message',
-            placeholder: 'What do you think?',
-            prefix: '',
-            suffix: '',
-            rows: 3,
-            multiple: false,
-            defaultValue: '',
-            protected: false,
-            persistent: true,
-            validate: {
-              required: false,
-              minLength: '',
-              maxLength: '',
-              pattern: '',
-              custom: ''
-            },
-            type: 'textarea',
-            conditional: {
-              show: false,
-              when: null,
-              eq: ''
-            }
-          }, {
-            type: 'button',
-            theme: 'primary',
-            disableOnInvalid: true,
-            action: 'submit',
-            block: false,
-            rightIcon: '',
-            leftIcon: '',
-            size: 'md',
-            key: 'submit',
-            tableView: false,
-            label: 'Submit',
-            input: true
-          }],
-          display: 'form'
-        };
-
+        $rootScope.form = json_schema_saved_form;
         $rootScope.renderForm = true;
         $rootScope.$on('formUpdate', function(event, form) {
           angular.merge($rootScope.form, form);
