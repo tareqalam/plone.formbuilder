@@ -21,13 +21,6 @@ Dependency
 - ngFormBulder (https://github.com/formio/ngFormBuilder)
 
 
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
 Documentation
 -------------
 
