@@ -18,4 +18,12 @@
       directory="static"
       />
 
+  <browser:page
+       for="*"
+       name="save_jsom_schema_of_form"
+       class=".save_jsom_schema_of_form.SaveJsonSchemaOfForm"
+       permission="zope2.View"
+       allowed_attributes=""
+       />
+
 </configure>

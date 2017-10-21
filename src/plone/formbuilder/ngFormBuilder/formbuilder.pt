@@ -81,7 +81,7 @@
       <div class="row">
         <div class="col-sm-8">
           <h3 class="text-center text-muted">The <a href="https://github.com/formio/ngFormBuilder" target="_blank">Form Builder</a> allows you to build a <select class="form-control form-type-select" ng-model="form.display" ng-options="display.name as display.title for display in displays"></select></h3>
-          <pre class="text-center bg-info"><h4><code>&lt;form-builder form="form"&gt;&lt;/form-builder&gt;</code></h4></pre>
+          <pre class="text-center bg-info"><h4>Make your form here with components from the left hand side toolbar</h4></pre>
           <div class="well" style="background-color: #fdfdfd;">
             <form-builder form="form"></form-builder>
           </div>
@@ -89,12 +89,16 @@
         <div class="col-sm-4">
           <h3 class="text-center text-muted">as JSON Schema</h3>
           <pre class="bg-info"><h4><code>$rootScope.form = </code></h4></pre>
+          <form method="post" tal:attributes="action python:context.absolute_url()+'/save_jsom_schema_of_form'">
+            <textarea style="display: none;">{{form}}</textarea>
+            <input type="submit" class="btn btn-info btn-lg" name="save_json" value="Save the form"/>
+          </form>
           <div class="well jsonviewer">
             <json-explorer data="form" collapsed="jsonCollapsed"></json-explorer>
           </div>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <h3 class="text-center text-muted">which <a href="https://github.com/formio/ngFormio" target="_blank">Renders as a Form</a> in your Application</h3>
           <pre class="text-center bg-info"><h4><code>&lt;formio form="form"&gt;&lt;/formio&gt;</code></h4></pre>
@@ -103,7 +107,8 @@
           </div>
         </div>
         <div class="clearfix"></div>
-      </div>
+      </div> -->
+      <!--
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 text-center">
           <h3 class="text-center text-muted">which connects to our API Platform</h3>
@@ -111,6 +116,9 @@
           <a href="https://form.io" target="_blank"><img style="width:100%" src="https://raw.githubusercontent.com/formio/help.form.io/gh-pages/assets/img/formioapi2.png" /></a>
         </div>
       </div>
+    -->
+
+    <!--
       <div class="row" style="margin-top: 40px;">
         <div class="col-sm-12 text-center">
           <a href="https://form.io" target="_blank" class="btn btn-lg btn-success">Get Started</a>
@@ -137,6 +145,8 @@ node server</pre>
           </div>
         </div>
       </div>
+
+    -->
     </div>
   </div>
  <!-- <a href="https://github.com/formio/formio" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a> -->
