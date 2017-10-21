@@ -8,8 +8,9 @@
 
   <includeDependencies package="." />
 
+  <include package=".content" />
   <include package=".browser" />
-    <include package=".ngFormBuilder" />
+  <include package=".ngFormBuilder" />
 
   <genericsetup:registerProfile
       name="default"
