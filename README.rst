@@ -11,7 +11,8 @@ Tell me what your product does
 Features
 --------
 
-- Can be bullet points
+- Create form using drag and drop tool from formio
+- Save form into plone dexeterity content type
 
 
 Examples
