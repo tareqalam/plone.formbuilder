@@ -25,7 +25,7 @@ This add-on can be seen in action at the following sites:
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+Full documentation for end users can be found in the "docs" folder, and is also available online at https://github.com/tareqalam/plone.formbuilder
 
 
 Translations
@@ -55,16 +55,15 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/collective/plone.formbuilder/issues
-- Source Code: https://github.com/collective/plone.formbuilder
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/tareqalam/plone.formbuilder/issues
+- Source Code: https://github.com/tareqalam/plone.formbuilder
+- Documentation: https://github.com/tareqalam/plone.formbuilder
 
 
 Support
 -------
 
 If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
 
 
 License
