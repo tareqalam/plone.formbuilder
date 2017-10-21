@@ -13,6 +13,11 @@ Features
 
 - Create form using drag and drop tool from formio
 - Save form into plone dexeterity content type
+- Save form schema json into RawDictWidget
+
+Dependency
+----------
+- collective.z3cform.rawdictwidget https://github.com/tareqalam/collective.z3cform.rawdictwidget
 
 
 Examples
