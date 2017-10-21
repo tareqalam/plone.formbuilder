@@ -8,6 +8,7 @@ from plone.autoform import directives
 from collective.z3cform.rawdictwidget import RawDictWidgetFactory
 import simplejson as json
 from plone.formbuilder import _
+from odict import odict
 
 
 class ISchemaFormFolder(model.Schema):
@@ -60,3 +61,42 @@ class SchemaFormFolder(Container):
         };
 
         """
+
+    def get_converted_json_schema_for_angular(self):
+
+        def convert_type(type_name):
+            type_map = {
+                'textfield': 'string',
+                'checkbox': 'string',
+                'button': 'string'
+            }
+            return type_map.get(type_name, type_name)
+
+        def convert_widget(input_type_name):
+            input_type_map = {
+                'text': 'string',
+                'checkbox': 'checkbox',
+                'button': 'button'
+            }
+            return input_type_map.get(input_type_name, input_type_name)
+
+        schema_json_new = {"properties": odict()}
+        if self.schema_json:
+            for field in self.schema_json.get('components'):
+                field_dict = {
+                    "type": convert_type(field.get('type')),
+                    "title": field.get('label', ''),
+                    "widget": convert_widget(field.get('inputType', field.get('type'))),
+                    "description": field.get('label', ''),
+                }
+                if field.get('type') == 'button':
+                    if schema_json_new.has_key('buttons'):
+                        field_dict['label'] = field_dict['title']
+                        schema_json_new['buttons'].append(field_dict)
+                    else:
+                        schema_json_new['buttons'] = [field_dict]
+                else:
+                    schema_json_new["properties"][field['key'].replace('undefined', '')] = field_dict
+            # import pdb;pdb.set_trace()
+            # schema_json_new["required"] = ["email", "password", "rememberMe"]
+        return schema_json_new

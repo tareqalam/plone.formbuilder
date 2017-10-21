@@ -42,7 +42,9 @@ setup(
         'Products.GenericSetup>=1.8.2',
         'setuptools',
         'z3c.jbot',
-        'simplejson'
+        'simplejson',
+        'plone.restapi[test]',
+        'odict'
     ],
     extras_require={
         'test': [

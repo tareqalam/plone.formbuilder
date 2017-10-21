@@ -101,7 +101,9 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row">
+
+      <!--
+      <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <h3 class="text-center text-muted">which <a href="https://github.com/formio/ngFormio" target="_blank">Renders as a Form</a> in your Application</h3>
           <pre class="text-center bg-info"><h4><code>&lt;formio form="form"&gt;&lt;/formio&gt;</code></h4></pre>
@@ -110,7 +112,8 @@
           </div>
         </div>
         <div class="clearfix"></div>
-      </div> -->
+      </div>
+      -->
       <!--
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 text-center">
@@ -194,7 +197,7 @@ node server</pre>
         $timeout(function() {
           $rootScope.jsonCollapsed = false;
         }, 200);
-        var currentDisplay = 'form';
+        var currentDisplay = json_schema_saved_form.display;
         $rootScope.$watch('form.display', function(display) {
           if (display && (display !== currentDisplay)) {
             currentDisplay = display;
