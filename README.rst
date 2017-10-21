@@ -18,6 +18,7 @@ Features
 Dependency
 ----------
 - collective.z3cform.rawdictwidget https://github.com/tareqalam/collective.z3cform.rawdictwidget
+- ngFormBulder (https://github.com/formio/ngFormBuilder)
 
 
 Examples
