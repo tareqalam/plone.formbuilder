@@ -10,4 +10,12 @@
     factory=".get.SchemaFormFolderGet"
     permission="zope2.View"
     />
+
+  <plone:service
+    method="POST"
+    name="@schemaformdata"
+    for="plone.formbuilder.content.schemaformfolder.ISchemaFormFolder"
+    factory=".add.SchemaFormDataPost"
+    permission="cmf.AddPortalContent"
+    />
 </configure>
