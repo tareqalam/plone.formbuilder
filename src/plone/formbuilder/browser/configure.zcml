@@ -26,4 +26,13 @@
        allowed_attributes=""
        />
 
+   <browser:page
+       for="*"
+       name="schemaformdata_view"
+       class=".schemaformdata_view.SchemaFormDataView"
+       permission="zope2.View"
+       allowed_attributes=""
+       template="schemaformdata_view.pt"
+       />
+
 </configure>

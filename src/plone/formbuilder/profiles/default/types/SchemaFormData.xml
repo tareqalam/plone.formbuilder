@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<object name="SchemaFormData" meta_type="Dexterity FTI" i18n:domain=""
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">SchemaFormData</property>
+ <property name="description" i18n:translate="">SchemaFormData</property>
+ <property name="icon_expr"></property>
+ <property name="factory">SchemaFormData</property>
+ <property name="link_target"></property>
+ <property name="immediate_view">schemaformdata_view</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+ </property>
+ <property name="allow_discussion">False</property>
+ <property name="default_view">schemaformdata_view</property>
+ <property name="view_methods">
+  <element value="view"/>
+ </property>
+ <property name="default_view_fallback">False</property>
+ <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="klass">plone.formbuilder.content.schemaformdata.SchemaFormData</property>
+ <property name="schema">plone.formbuilder.content.schemaformdata.ISchemaFormData</property>
+ <property name="model_source"></property>
+ <property name="model_file"></property>
+ <property name="behaviors">
+  <element value="plone.app.content.interfaces.INameFromTitle" />
+  <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+ </property>
+  <alias from="(Default)" to="schemaformdata_view" />
+  <alias from="view" to="schemaformdata_view" />
+  <alias from="edit" to="@@schemaformdata_view" />
+  <alias from="sharing" to="@@sharing" />
+
+  <!-- Actions -->
+  <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${object_url}/" visible="True">
+    <permission value="View" />
+  </action>
+  <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+    <permission value="Modify portal content" />
+  </action>
+</object>
