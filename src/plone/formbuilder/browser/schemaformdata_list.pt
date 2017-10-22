@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" metal:use-macro="context/main_template/macros/master" i18n:domain="dasein.strategy">
+
+<head>
+</head>
+
+<body>
+    <metal:main fill-slot="main">
+        <h1 class="documentFirstHeading" i18n:translate="">Schema Form Data View</h1>
+        <div class="field">
+          <div tal:content="context/Title" />
+        </div>
+
+        <div class="field">
+          <div tal:content="context/Description" />
+        </div>
+
+        <div class="field">
+            <div tal:define="data python:context.objectValues()">
+                <table class="listing">
+                    <tr tal:repeat="row data">
+
+                        <td tal:content="python: row.Title()"/>
+                        <td tal:content="python: row.schema_form_data"/>
+                        <td>
+                            <a tal:attributes="href python:row.absolute_url()">View</a>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <a class="context" tal:attributes="href python:context.absolute_url()+'/formbuilder'">Back to form builder</a>
+
+
+    </metal:main>
+</body>
+
+</html>

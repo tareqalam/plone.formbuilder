@@ -35,4 +35,13 @@
        template="schemaformdata_view.pt"
        />
 
+    <browser:page
+       for="*"
+       name="schemaformdata_list"
+       class=".schemaformdata_list.SchemaFormDataList"
+       permission="zope2.View"
+       allowed_attributes=""
+       template="schemaformdata_list.pt"
+       />
+
 </configure>

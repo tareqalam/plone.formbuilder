@@ -83,7 +83,7 @@
                <h3 class="text-center">A form builder tool for plone</h3>
           </div>
           <div class="col-sm-4">
-              <a class="btn btn-lg btn-success" target="_blank" tal:attributes="href python:context.absolute_url()+'/folder_contents'">List form data</a>
+              <a class="btn btn-lg btn-success" tal:attributes="href python:context.absolute_url()+'/schemaformdata_list'">List form data</a>
           </div>
       </div>
       <div class="row">
