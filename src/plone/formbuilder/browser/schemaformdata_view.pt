@@ -15,7 +15,15 @@
         </div>
 
         <div class="field">
-            <div tal:content="context/schema_form_data"/>
+            <div tal:define="data python:context.get_schema_form_data()">
+                <table class="listing">
+                    <tr tal:repeat="row data">
+                      <metal:col tal:repeat="col row">
+                        <td tal:content="col"/>
+                      </metal:col>
+                    </tr>
+                </table>
+            </div>
         </div>
 
 

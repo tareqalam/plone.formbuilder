@@ -11,6 +11,7 @@ from zope.component import queryMultiAdapter
 from zope.interface import alsoProvides
 
 import plone.protect.interfaces
+import datetime
 
 
 class SchemaFormDataPost(Service):
@@ -20,9 +21,10 @@ class SchemaFormDataPost(Service):
     def reply(self):
         data = json_body(self.request)
 
-        type_ = data.get('@type', None)
+        type_ = data.get('@type', 'SchemaFormData')
         id_ = data.get('id', None)
-        title = data.get('title', None)
+        title = data.get('title', 'Data at %s' % datetime.datetime.now().strftime('%Y-%m-%d %H%M%S'))
+        # import pdb;pdb.set_trace()
         schema_form_data = data.get('schema_form_data', {})
 
         if not type_:
@@ -63,16 +65,16 @@ class SchemaFormDataPost(Service):
         self.request.response.setStatus(201)
         self.request.response.setHeader('Location', obj.absolute_url())
 
-        serializer = queryMultiAdapter(
-            (obj, self.request),
-            ISerializeToJson
-        )
+        # serializer = queryMultiAdapter(
+        #    (obj, self.request),
+        #    ISerializeToJson
+        # )
 
-        serialized_obj = serializer()
+        # serialized_obj = serializer()
 
         # HypermediaBatch can't determine the correct canonical URL for
         # objects that have just been created via POST - so we make sure
         # to set it here
-        serialized_obj['@id'] = obj.absolute_url()
-
-        return serialized_obj
+        # serialized_obj['@id'] = obj.absolute_url()
+        success = {'message': 'successfully added data'}
+        return success

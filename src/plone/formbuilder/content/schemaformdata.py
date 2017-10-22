@@ -26,3 +26,15 @@ class SchemaFormData(Item):
     """Convenience subclass for ``CDR`` portal type
     """
     # Make sure Container's accessors don't take precedence
+
+    def get_schema_form_data(self):
+        """
+        """
+        if self.schema_form_data:
+            data = []
+            json_data = json.loads(self.schema_form_data)
+            for k, v in json_data.items():
+                data.append([k, v])
+            return data
+        else:
+            return []
