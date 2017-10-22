@@ -39,7 +39,7 @@ class SchemaFormFolder(Container):
         get schema json
         """
         if self.schema_json:
-            return json.dumps(self.schema_json)
+            return self.schema_json
         else:
             return """
             {
@@ -68,7 +68,8 @@ class SchemaFormFolder(Container):
             type_map = {
                 'textfield': 'string',
                 'checkbox': 'string',
-                'button': 'string'
+                'button': 'string',
+                'radio': 'string'
             }
             return type_map.get(type_name, type_name)
 
@@ -76,19 +77,30 @@ class SchemaFormFolder(Container):
             input_type_map = {
                 'text': 'string',
                 'checkbox': 'checkbox',
+                'radio': 'radio',
                 'button': 'button'
             }
             return input_type_map.get(input_type_name, input_type_name)
-
         schema_json_new = {"properties": odict()}
         if self.schema_json:
-            for field in self.schema_json.get('components'):
+            schema_json = json.loads(self.schema_json)
+            for field in schema_json.get('components'):
                 field_dict = {
                     "type": convert_type(field.get('type')),
                     "title": field.get('label', ''),
                     "widget": convert_widget(field.get('inputType', field.get('type'))),
-                    "description": field.get('label', ''),
+                    "description": field.get('description', ''),
+                    "placeholder": field.get('placeholder', '')
                 }
+
+                if field.get('type') == 'radio':
+                    field_dict["oneOf"] = []
+                    for option in field.get('values'):
+                        field_dict["oneOf"].append({
+                            "description": option.get('label'),
+                            "enum": [option.get('value')]
+                        })
+
                 if field.get('type') == 'button':
                     if schema_json_new.has_key('buttons'):
                         field_dict['label'] = field_dict['title']

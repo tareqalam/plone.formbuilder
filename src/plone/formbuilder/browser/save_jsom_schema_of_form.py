@@ -27,7 +27,7 @@ class SaveJsonSchemaOfForm(BrowserView):
             obj = self.context
             safeWrite(obj, request)
             raw_json = request.get('schema_json')
-            schema_json = json.loads(raw_json)
+            schema_json = raw_json  # json.loads(raw_json)
             obj.schema_json = schema_json
             obj.reindexObject()
             api.portal.show_message(message='Saved form succesfully!', request=request)
